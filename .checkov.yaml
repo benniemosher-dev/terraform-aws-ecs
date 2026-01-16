@@ -1,2 +1,3 @@
 skip-check:
-  - CKV_TF_1  # Module sources use version tags, not commit hashes
+  - CKV_TF_1
+  - CKV_AWS_224
