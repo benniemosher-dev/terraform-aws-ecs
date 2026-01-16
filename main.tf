@@ -49,8 +49,9 @@ resource "aws_ecs_task_definition" "this" {
           awslogs-stream-prefix = "ecs"
         }
       }
-      memory = var.config.task-definition-memory
-      name   = var.config.cluster-name
+      memory               = var.config.task-definition-memory
+      name                 = var.config.cluster-name
+      readonlyRootFilesystem = true
       portMappings = [
         {
           containerPort = var.config.task-definition-container-port
@@ -72,7 +73,7 @@ resource "aws_ecs_task_definition" "this" {
     operating_system_family = "LINUX"
   }
 
-  task_role_arn = aws_iam_role.ecs-task-execution.arn
+  task_role_arn = aws_iam_role.ecs-task.arn
 }
 
 resource "aws_ecs_service" "this" {
